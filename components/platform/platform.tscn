@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://coq6d3u6wnvs2"]
+[gd_scene load_steps=7 format=3 uid="uid://coq6d3u6wnvs2"]
 
 [ext_resource type="Script" uid="uid://dilh5jyuklov6" path="res://components/platform/platform.gd" id="1_dpc6h"]
+[ext_resource type="AudioStream" uid="uid://cp0ytasm6tqri" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_bump.ogg" id="2_m2s26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4vtk"]
 size = Vector2(384, 40)
@@ -58,8 +59,12 @@ texture_filter = 3
 unique_name_in_owner = true
 root_node = NodePath("../Sprites")
 libraries = {
-"": SubResource("AnimationLibrary_cwxfq")
+&"": SubResource("AnimationLibrary_cwxfq")
 }
+
+[node name="FallAudioStreamPlayer" type="AudioStreamPlayer" parent="RigidBody2D"]
+unique_name_in_owner = true
+stream = ExtResource("2_m2s26")
 
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_body_entered"]

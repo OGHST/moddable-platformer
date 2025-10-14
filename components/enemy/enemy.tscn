@@ -1,43 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk0xon0k7ga23"]
+[gd_scene load_steps=11 format=3 uid="uid://dk0xon0k7ga23"]
 
-[ext_resource type="Texture2D" uid="uid://dwhi5vmkbnyk4" path="res://assets/enemy.png" id="1_57cf6"]
 [ext_resource type="Script" uid="uid://d003tgo4vrak8" path="res://components/enemy/enemy.gd" id="1_urf0o"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r7qd"]
-atlas = ExtResource("1_57cf6")
-region = Rect2(444, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77x52"]
-atlas = ExtResource("1_57cf6")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_emkhg"]
-atlas = ExtResource("1_57cf6")
-region = Rect2(148, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltgan"]
-atlas = ExtResource("1_57cf6")
-region = Rect2(296, 0, 128, 128)
+[ext_resource type="Texture2D" uid="uid://baaelaxx7ur28" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_flat.png" id="2_43fgs"]
+[ext_resource type="Texture2D" uid="uid://cbbs2eesqgias" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_rest.png" id="3_3igal"]
+[ext_resource type="Texture2D" uid="uid://cp0k0obcojny0" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_walk_a.png" id="3_k83e4"]
+[ext_resource type="AudioStream" uid="uid://ckoqe3qqv68cp" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_hurt.ogg" id="3_xlq87"]
+[ext_resource type="Texture2D" uid="uid://csdb82g38fia3" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_walk_b.png" id="4_3igal"]
+[ext_resource type="AudioStream" uid="uid://df722tx4ibpnh" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_disappear.ogg" id="4_5eic1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xpc5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5r7qd")
+"texture": ExtResource("2_43fgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3igal")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_77x52")
+"texture": ExtResource("3_k83e4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_emkhg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltgan")
+"texture": ExtResource("4_3igal")
 }],
 "loop": true,
 "name": &"walk",
@@ -48,7 +37,7 @@ animations = [{
 size = Vector2(48, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cepcq"]
-size = Vector2(82, 83)
+size = Vector2(128, 83)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
@@ -61,7 +50,7 @@ script = ExtResource("1_urf0o")
 unique_name_in_owner = true
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_2xpc5")
-animation = &"walk"
+animation = &"hit"
 autoplay = "walk"
 
 [node name="LeftRay" type="RayCast2D" parent="."]
@@ -84,5 +73,13 @@ position = Vector2(0, -106)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 58.5)
 shape = SubResource("RectangleShape2D_cepcq")
+
+[node name="EnemyDeathAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_xlq87")
+
+[node name="PlayerDeathAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_5eic1")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

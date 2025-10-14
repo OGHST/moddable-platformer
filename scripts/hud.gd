@@ -5,6 +5,7 @@ extends CanvasLayer
 	Global.Endings.WIN: %WinEnding,
 	Global.Endings.LOSE: %LoseEnding,
 }
+@onready var time_gui : Control = %TimeGUI
 
 
 func _process(_delta):
@@ -14,6 +15,7 @@ func _process(_delta):
 func _ready():
 	set_process(false)
 	set_physics_process(false)
+	time_gui.visible = false
 
 	Global.lives_changed.connect(_on_lives_changed)
 
@@ -49,6 +51,7 @@ func _unhandled_input(event):
 		and %Start.is_visible_in_tree()
 	):
 		%Start.hide()
+		time_gui.visible = true
 		Global.game_started.emit()
 
 

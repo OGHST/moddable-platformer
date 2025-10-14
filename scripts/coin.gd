@@ -12,6 +12,7 @@ extends Area2D
 
 @onready var _sprite: Sprite2D = %Sprite2D
 @onready var _initial_texture: Texture2D = %Sprite2D.texture
+@onready var coin_audio : AudioStreamPlayer = %CoinAudioStreamPlayer
 
 
 func _set_texture(new_texture: Texture2D):
@@ -37,4 +38,5 @@ func _ready():
 
 func _on_body_entered(_body):
 	Global.collect_coin()
+	coin_audio.play()
 	queue_free()

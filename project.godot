@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Moddable Platformer"
-config/version="v1.5-5-g6037d5c"
+config/version="v1.5-6-g1731223"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cc5dlq48qnbwf"
 
 [autoload]
 
@@ -27,6 +27,18 @@ window/size/viewport_height=1080
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://android/": "gray",
+"res://assets/": "purple",
+"res://components/": "green",
+"res://doc/": "gray",
+"res://rules_goals/": "orange",
+"res://scripts/": "yellow",
+"res://spaces/": "blue"
+}
 
 [global_group]
 

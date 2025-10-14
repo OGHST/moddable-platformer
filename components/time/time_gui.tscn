@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2u7ul8ptunqg"]
+
+[ext_resource type="Script" uid="uid://54snslgajn1d" path="res://scripts/time/time_gui.gd" id="1_63bs0"]
+[ext_resource type="Script" uid="uid://et0kwqsvb6b5" path="res://scripts/time/time_system.gd" id="2_vnm8a"]
+[ext_resource type="Script" uid="uid://b8i0ujaekxo8w" path="res://scripts/time/date_time.gd" id="3_g8g3g"]
+
+[sub_resource type="Resource" id="Resource_a2258"]
+script = ExtResource("3_g8g3g")
+seconds = 0
+minutes = 0
+hours = 0
+days = 0
+metadata/_custom_type_script = "uid://b8i0ujaekxo8w"
+
+[node name="TimeGUI" type="Control"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 160.0
+grow_horizontal = 2
+script = ExtResource("1_63bs0")
+
+[node name="ClockControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ClockControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="minutes" type="Label" parent="ClockControl/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="colon" type="Label" parent="ClockControl/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="seconds" type="Label" parent="ClockControl/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeSystem" type="Node" parent="."]
+script = ExtResource("2_vnm8a")
+date_time = SubResource("Resource_a2258")
+ticks_per_sec = 1
+metadata/_custom_type_script = "uid://et0kwqsvb6b5"
+
+[connection signal="updated" from="TimeSystem" to="." method="_on_time_system_updated"]

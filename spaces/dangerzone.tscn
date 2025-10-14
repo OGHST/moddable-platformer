@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dthyncc3spfks"]
+[gd_scene load_steps=4 format=3 uid="uid://dthyncc3spfks"]
 
 [ext_resource type="Script" uid="uid://d000x4b6xlry" path="res://scripts/dangerzone.gd" id="1_gg0kk"]
+[ext_resource type="AudioStream" uid="uid://df722tx4ibpnh" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_disappear.ogg" id="2_yd4ve"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rpdqf"]
 
@@ -11,5 +12,9 @@ shape = SubResource("WorldBoundaryShape2D_rpdqf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("WorldBoundaryShape2D_rpdqf")
+
+[node name="PlayerDeathAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_yd4ve")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

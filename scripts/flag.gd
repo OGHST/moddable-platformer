@@ -16,7 +16,7 @@ enum FlagPosition {
 
 @onready var _sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var _initial_sprite_frames: SpriteFrames = %AnimatedSprite2D.sprite_frames
-
+@onready var flag_up : AudioStreamPlayer = %FlagUpAudioStreamPlayer
 
 func _set_sprite_frames(new_sprite_frames):
 	sprite_frames = new_sprite_frames

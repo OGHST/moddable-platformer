@@ -25,6 +25,8 @@ var direction: int
 @onready var _sprite := %AnimatedSprite2D
 @onready var _left_ray := %LeftRay
 @onready var _right_ray := %RightRay
+@onready var enemy_death : AudioStreamPlayer = %EnemyDeathAudioStreamPlayer
+@onready var player_death : AudioStreamPlayer = %PlayerDeathAudioStreamPlayer
 
 
 func _set_speed(new_speed):
@@ -56,7 +58,7 @@ func _physics_process(delta):
 
 	velocity.x = direction * speed
 
-	_sprite.flip_h = velocity.x < 0
+	_sprite.flip_h = -velocity.x < 0
 
 	move_and_slide()
 
@@ -72,6 +74,9 @@ func _on_hitbox_body_entered(body):
 	if body.is_in_group("players"):
 		if squashable and body.velocity.y > 0 and body.position.y < position.y:
 			body.stomp()
+			_sprite.play("hit")
+			enemy_death.play()
 			queue_free()
 		elif player_loses_life:
+			player_death.play()
 			Global.lives -= 1

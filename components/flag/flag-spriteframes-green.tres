@@ -1,20 +1,18 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b3orjhfv6eeud"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://b3orjhfv6eeud"]
 
-[ext_resource type="Texture2D" uid="uid://bwqhhtm1mdivu" path="res://assets/flag.png" id="1_v2slk"]
+[ext_resource type="Texture2D" uid="uid://v5o0h7ehgw5d" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/flag_off.png" id="1_7fiv3"]
+[ext_resource type="Texture2D" uid="uid://c7t4rk1h6lu31" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/flag_green_a.png" id="2_s3re4"]
+[ext_resource type="Texture2D" uid="uid://df71ngnll7trx" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/flag_green_b.png" id="3_u2rig"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rj5q"]
-atlas = ExtResource("1_v2slk")
-region = Rect2(148, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqhmt"]
-atlas = ExtResource("1_v2slk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbkra"]
+atlas = ExtResource("1_7fiv3")
 region = Rect2(0, 0, 128, 128)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rj5q")
+"texture": SubResource("AtlasTexture_lbkra")
 }],
 "loop": true,
 "name": &"down",
@@ -22,7 +20,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhmt")
+"texture": ExtResource("2_s3re4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u2rig")
 }],
 "loop": true,
 "name": &"up",

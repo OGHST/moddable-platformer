@@ -3,6 +3,8 @@ extends Area2D
 
 signal dangerzone_entered
 
+@onready var player_death : AudioStreamPlayer = %PlayerDeathAudioStreamPlayer
+
 @export var shape: Shape2D:
 	set(value):
 		if not is_node_ready():
@@ -14,4 +16,5 @@ signal dangerzone_entered
 
 func _on_body_entered(_body):
 	dangerzone_entered.emit()
+	player_death.play()
 	Global.lives -= 1
