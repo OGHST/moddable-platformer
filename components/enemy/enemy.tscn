@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk0xon0k7ga23"]
+[gd_scene load_steps=10 format=3 uid="uid://dk0xon0k7ga23"]
 
-[ext_resource type="Script" uid="uid://d003tgo4vrak8" path="res://components/enemy/enemy.gd" id="1_urf0o"]
+[ext_resource type="Script" uid="uid://d003tgo4vrak8" path="res://scripts/enemy.gd" id="1_urf0o"]
 [ext_resource type="Texture2D" uid="uid://baaelaxx7ur28" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_flat.png" id="2_43fgs"]
-[ext_resource type="Texture2D" uid="uid://cbbs2eesqgias" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_rest.png" id="3_3igal"]
 [ext_resource type="Texture2D" uid="uid://cp0k0obcojny0" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_walk_a.png" id="3_k83e4"]
 [ext_resource type="AudioStream" uid="uid://ckoqe3qqv68cp" path="res://assets/kenney_new-platformer-pack-1.0/Sounds/sfx_hurt.ogg" id="3_xlq87"]
 [ext_resource type="Texture2D" uid="uid://csdb82g38fia3" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Enemies/Double/slime_normal_walk_b.png" id="4_3igal"]
@@ -13,9 +12,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_43fgs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_3igal")
 }],
 "loop": false,
 "name": &"hit",

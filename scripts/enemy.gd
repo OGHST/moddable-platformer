@@ -71,11 +71,15 @@ func _on_gravity_changed(new_gravity):
 
 
 func _on_hitbox_body_entered(body):
+	var delay_time = get_tree().create_timer(0.2)
+	
 	if body.is_in_group("players"):
 		if squashable and body.velocity.y > 0 and body.position.y < position.y:
 			body.stomp()
+			speed = 0
 			_sprite.play("hit")
 			enemy_death.play()
+			await delay_time.timeout
 			queue_free()
 		elif player_loses_life:
 			player_death.play()

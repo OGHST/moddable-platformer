@@ -24,7 +24,7 @@ var fall_timer: Timer
 @onready var _collision_shape := %CollisionShape2D
 @onready var _area_collision_shape := %AreaCollisionShape2D
 @onready var _animation_player := %AnimationPlayer
-@onready var fall_sound : AudioStreamPlayer = %FallAudioStreamPlayer
+
 
 func _set_width(new_width):
 	width = new_width
@@ -88,7 +88,6 @@ func _on_area_2d_body_entered(body):
 	if fall_time > 0:
 		fall_timer.start(fall_time)
 		_animation_player.play("shake")
-		fall_sound.play()
 	elif fall_time == 0:
 		_rigid_body.call_deferred("set_freeze_enabled", false)
 
@@ -96,4 +95,3 @@ func _on_area_2d_body_entered(body):
 func _fall():
 	_rigid_body.freeze = false
 	_animation_player.stop()
-	fall_sound.stop()

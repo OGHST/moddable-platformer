@@ -37,7 +37,9 @@ extends Area2D
 
 
 func _on_body_entered(_body):
+	var delay_time = get_tree().create_timer(0.2)
+	
 	Global.collect_coin()
 	coin_audio.play()
-	get_tree().create_timer(1)
+	await delay_time.timeout
 	queue_free()
