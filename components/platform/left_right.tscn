@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://coq6d3u6wnvs2"]
+[gd_scene load_steps=6 format=3 uid="uid://jrv4edyd0q0t"]
 
-[ext_resource type="Texture2D" uid="uid://cnsfc4sy12ia" path="res://assets/tiles-a.png" id="1_nc71g"]
+[ext_resource type="Texture2D" uid="uid://cnsfc4sy12ia" path="res://assets/tiles-a.png" id="1_3nqan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2vn2"]
 size = Vector2(256, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2s26"]
-atlas = ExtResource("1_nc71g")
+atlas = ExtResource("1_3nqan")
 region = Rect2(896, 128, 256, 128)
 
 [sub_resource type="Animation" id="Animation_uk8as"]
 resource_name = "left_right"
-length = 3.0
+length = 6.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,44 +20,27 @@ tracks/0/path = NodePath("Node2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-384, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uwoaf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-384, 0), Vector2(0, 0), Vector2(384, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_suonx"]
 _data = {
-&"RESET": SubResource("Animation_uwoaf"),
 &"left_right": SubResource("Animation_uk8as")
 }
 
-[node name="Platform" type="Node2D"]
+[node name="LeftRight" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-384, 0)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="Node2D"]
-unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidBody2D"]
-unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_o2vn2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
@@ -64,8 +48,8 @@ texture = SubResource("AtlasTexture_m2s26")
 region_rect = Rect2(640, 0, 384, 128)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
-unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_suonx")
 }
+autoplay = "left_right"
