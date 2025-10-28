@@ -2,6 +2,8 @@
 class_name GameLogic
 extends Node
 
+@export var next_scene : String
+
 @export_group("Win Condition")
 
 ## Should you win the game by collecting coins?
@@ -85,6 +87,10 @@ func _on_coin_collected():
 func _on_flag_raised(flag: Flag):
 	if _check_win_conditions(flag_to_win if flag_to_win else flag):
 		Global.game_ended.emit(Global.Endings.WIN)
+		
+		await get_tree().create_timer(1.0).timeout
+		SceneManager.transition_to_scene(next_scene)
+		
 	elif flag_to_win == null or flag == flag_to_win:
 		# Put the ending flag back if the player hasn't satisfied conditions.
 		flag.flag_position = Flag.FlagPosition.DOWN

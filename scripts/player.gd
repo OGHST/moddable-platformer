@@ -9,6 +9,7 @@ const _PLAYER_ACTIONS = {
 		"jump": "player_1_jump",
 		"left": "player_1_left",
 		"right": "player_1_right",
+		"down": "player_1_down",
 	},
 	Global.Player.TWO:
 	{
@@ -66,6 +67,7 @@ var double_jump_armed: bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var original_position: Vector2
+var _on_ladder : bool = false
 
 @onready var _sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var _initial_sprite_frames: SpriteFrames = %AnimatedSprite2D.sprite_frames
@@ -200,14 +202,24 @@ func _physics_process(delta):
 	if velocity == Vector2.ZERO:
 		_sprite.play("idle")
 	else:
-		if not is_on_floor():
+		if not is_on_floor() and !_on_ladder:
 			if velocity.y > 0:
 				_sprite.play("jump_down")
 			else:
 				_sprite.play("jump_up")
 		else:
 			_sprite.play("walk")
-		_sprite.flip_h = velocity.x < 0
+		
+	if _on_ladder:
+		var climb_direction = _get_player_axis("jump", "down")
+		if climb_direction:
+			velocity.y = move_toward(velocity.y, sign(climb_direction) * speed, abs(climb_direction) * acceleration * delta)
+			_sprite.play("climb")
+		else:
+			velocity.y = move_toward(velocity.y, 0, acceleration * delta)
+			_sprite.play("climb")
+
+	_sprite.flip_h = velocity.x < 0
 
 	move_and_slide()
 
@@ -225,3 +237,14 @@ func reset():
 func _on_lives_changed():
 	if Global.lives > 0:
 		reset()
+
+
+func _on_ladder_body_entered(body: Node2D) -> void:
+	if "Player" in body.name:
+		_on_ladder = true
+
+
+func _on_ladder_body_exited(body: Node2D) -> void:
+	if "Player" in body.name:
+		_on_ladder = false
+		
