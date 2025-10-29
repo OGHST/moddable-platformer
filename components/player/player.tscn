@@ -36,8 +36,7 @@ position = Vector2(0, -128)
 sprite_frames = ExtResource("2_msaml")
 animation = &"climb"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.86356
+frame_progress = 0.435772
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)

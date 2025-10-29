@@ -18,7 +18,7 @@ config/icon="uid://cc5dlq48qnbwf"
 
 [autoload]
 
-Global="*res://components/global.gd"
+Global="*res://scripts/global.gd"
 SceneManager="*res://scripts/scene_manager.gd"
 
 [display]
@@ -106,7 +106,7 @@ player_1_down={
 2d_physics/layer_2="Coins"
 2d_physics/layer_3="Platforms"
 2d_physics/layer_4="Enemy"
-2d_physics/layer_5="Protals"
+2d_physics/layer_5="Portals"
 
 [rendering]
 

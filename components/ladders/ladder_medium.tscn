@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxukg0huvoej8"]
+
+[ext_resource type="Texture2D" uid="uid://dedxejisyem01" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/ladder_top.png" id="1_oi1wv"]
+[ext_resource type="Texture2D" uid="uid://cyq8mmisjaq8h" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/ladder_middle.png" id="2_uo15h"]
+[ext_resource type="Texture2D" uid="uid://c84m34fa54y8t" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Tiles/Double/ladder_bottom.png" id="3_u35jy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlrwa"]
+size = Vector2(128, 656)
+
+[node name="LadderMedium" type="Area2D"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xlrwa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -320)
+texture = ExtResource("1_oi1wv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -192)
+texture = ExtResource("2_uo15h")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, 64)
+texture = ExtResource("2_uo15h")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("2_uo15h")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, 192)
+texture = ExtResource("2_uo15h")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(0, 320)
+texture = ExtResource("3_u35jy")
