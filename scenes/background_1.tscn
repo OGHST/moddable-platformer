@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dibflt2cj22ep" path="res://scripts/background.gd" id="1_1jh5j"]
 [ext_resource type="Texture2D" uid="uid://bwhefsjodujbp" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Backgrounds/Double/background_color_mushrooms.png" id="2_ew214"]
-[ext_resource type="Texture2D" uid="uid://dne1wh5fsffy" path="res://assets/background-layer-2.png" id="2_mk66l"]
 [ext_resource type="Texture2D" uid="uid://b7m48114tr1js" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Backgrounds/Double/background_solid_cloud.png" id="2_onsyd"]
 [ext_resource type="AudioStream" uid="uid://bp3ng0igbtbu6" path="res://assets/sounds/game-music-loop-9-145494.mp3" id="4_aiqge"]
+[ext_resource type="Texture2D" uid="uid://cb76b62tuj35f" path="res://assets/kenney_new-platformer-pack-1.0/Sprites/Backgrounds/Double/background_clouds.png" id="4_x6ul7"]
 
 [node name="Background" type="ParallaxBackground"]
 follow_viewport_enabled = true
@@ -106,20 +106,49 @@ centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(1600, 0)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
-position = Vector2(0, -115)
+position = Vector2(0, -2560)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_mk66l")
+texture = ExtResource("4_x6ul7")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer3"]
-position = Vector2(1600, -115)
+position = Vector2(2560, -2560)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_mk66l")
+texture = ExtResource("4_x6ul7")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(5120, -2560)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_x6ul7")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(7680, -2560)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_x6ul7")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(10240, -2560)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_x6ul7")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(12800, -2560)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_x6ul7")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(15360, -2560)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_x6ul7")
 centered = false
 
 [node name="BGAudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
